@@ -1,0 +1,32 @@
+# 原型和原型链
+
+### 原型
+当试图访问一个对象属性事，首先会在该对象上寻找，如果找不到会继续在该对象的原型上寻找，依次层层往上寻找，直到找到原型链的末尾。
+
+### 原型链
+原型对象也有可能拥有原型，并从中继承方法和属性。一层一层往上查找，这也是为何一个对象会具有其他对象的属性和方法。
+
+```js
+function Person(name) {
+    this.name = name;
+    this.age = 18;
+    this.sayName = function() {
+        console.log(this.name);
+    }
+}
+// 第二步 创建实例
+var person = new Person('person')
+
+person.__proto__  === Person.prototype 
+
+Person.prototype.constructor === Person
+
+Person.prototype.__proto__ === Object.prototype
+
+Person.__proto__ === Function.prototype
+
+Object.__proto__ === Function.prototype
+
+Object.prototype.__proto__ === null
+
+```
